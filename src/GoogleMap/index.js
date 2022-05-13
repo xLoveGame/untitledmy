@@ -161,15 +161,16 @@ function GoogleMap() {
 
     return (
 
-            <MapWrapper >please input where you want to search:
+            <MapWrapper  >please input where you want to search:
                 <Search
-                    placeholder="input search text"
+                    placeholder="input the post code "
                     allowClear
                     enterButton="Search"
                     size="large"
                     onSearch={onSearch}
 
                 /> <a >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this is a {myvalue} crime!</a>
+                <br/>
                 <GoogleMapReact
                     defaultZoom={MAP.defaultZoom}
                     defaultCenter={MAP.defaultCenter}

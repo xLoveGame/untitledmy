@@ -1,0 +1,178 @@
+/* Main element */
+html,
+body,
+h1,
+h2 {
+  font-family: 'Archivo Narrow', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+main {
+  display: flex;
+}
+
+::placeholder {
+  color: #666;
+}
+
+/* Header */
+/*#app-header {*/
+/*  align-items: center;*/
+/*  background: #496aa8;*/
+/*  color: #fff;*/
+/*  display: flex;*/
+/*  height: 90px;*/
+/*  justify-content: center;*/
+/*  text-shadow: 2px 2px 2px #222;*/
+/*}*/
+
+/*@media screen and (max-width: 360px) {*/
+/*  #app-header h1 {*/
+/*    font-size: 1.7em;*/
+/*  }*/
+/*}*/
+
+/* Sidebar */
+#sidebar {
+  display: flex;
+  height: calc(100vh - 175px);
+  justify-content: space-between;
+  margin: 55px 0 0 -275px;
+  position: fixed;
+  transition: margin 1s;
+  z-index: 1;
+}
+
+#sidebar input {
+  height: 33px;
+  padding: 0 5px;
+}
+
+#sidebar select {
+  height: 35px;
+}
+
+#sidebar h2 {
+  font-size: 20px;
+  margin: 0 0 5px 0;
+}
+
+#sidebar-main {
+  border-radius: 0 0 10px 0;
+  padding: 20px;
+  width: 235px;
+}
+
+#sidebar-tab {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  position: relative;
+  width: 40px;
+}
+
+#sidebar-main,
+#sidebar-tab {
+  /*background: wheat;*/
+  background-color: aliceblue;
+
+}
+
+#sidebar-tab,
+#sidebar-tab:before {
+  border-radius: 0 5px 5px 0;
+}
+
+/*This element sits below the #sidebar-tab which means that when
+ box-shadow is applied, the shadow doesn't bleed into other divs*/
+#sidebar-tab:before {
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+#sidebar-main,
+#sidebar-tab:before {
+  box-shadow: 1px 1px 5px #666;
+}
+
+#tab-link {
+  color: hotpink;
+  height: 40px;
+  margin-left: 275px;
+  position: absolute;
+}
+
+#tab-arrow {
+  transition: transform 1s;
+}
+
+.open {
+  margin-left: 0 !important;
+}
+
+.rotate {
+  transform: rotate(180deg) !important;
+}
+
+#location-component {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#neighbourhood-component {
+  display: flex;
+  flex-flow: column nowrap;
+  height: calc(100% - 75px);
+  margin-top: 15px;
+}
+
+#neighbourhood-list {
+  height: calc(100% - 75px);
+  margin: 5px 0 0 0;
+  overflow-y: auto;
+  padding-left: 5px;
+}
+
+#neighbourhood-list a {
+  color: steelblue;
+}
+
+.highlighted {
+  color: purple !important;
+  text-decoration: underline;
+}
+
+#no-results,
+#loading {
+  margin-top: 25%;
+  text-align: center;
+}
+
+/* Map */
+.contact-details {
+  max-width: calc(100vw - 60px);
+  overflow-wrap: break-word;
+}
+
+.contact-details span {
+  font-weight: bold;
+}
+
+.contact-details ul {
+  max-width: 350px;
+  padding-left: 5px;
+  width: calc(100% - 5px);
+}

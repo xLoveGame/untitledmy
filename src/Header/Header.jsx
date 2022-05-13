@@ -9,41 +9,27 @@ import {useNavigate} from "react-router-dom";
 const {Header,Sider} = Layout;
 
 
-function Headers(props) {
-    const navigate = useNavigate()
+function Headers() {
 
 
-    let codeAre = null
-    if (props.email === "test") {
-        console.log(props.email + "123")
-        codeAre = <Menu.Item style={{
-            left: "1700%"
-        }}>
-            <a href="../Login"> login</a>
-        </Menu.Item>
-    } else {
-        console.log(props.email + "11213124")
-        codeAre = <Menu.Item style={{}}>
-
-
-            <a onClick={e => e.preventDefault()}>
-                <Space>
-                    {props.email}
-                    <DownOutlined/>
-                </Space>
-            </a>
-    </Menu.Item>
-    }
 
     return (
-        <Layout>
+        <Layout >
             <Header className="header">
                 <div className="logo"/>
                 <Menu theme="dark" mode="horizontal">
-
-                    <Menu.Item><a >Basket</a></Menu.Item>
-
-                </Menu>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <b><a style={{color:"#003366" ,fontSize:21}} href="../" >Crime Map</a></b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <b><a style={{color:"#003366" ,fontSize:21}}  href="../police">Police Station</a></b>
+            </Menu>
             </Header>
         </Layout>)
 }
