@@ -20,24 +20,24 @@ const Sidebar = ({
         {...{ isLoading, setFilter, filter, setNeighbourhood, neighbourhood }}
       />
     </div>
-    <Tab />
+    {/*<Tab />*/}
   </section>
 );
 
-const Tab = () => (
-  <a
-    id="tab-link"
-    href="#"
-    onClick={() => {
-      document.getElementById('sidebar').classList.toggle('open');
-      document.getElementById('tab-arrow').classList.toggle('rotate');
-    }}
-  >
-    <div id="sidebar-tab">
-      <div id="tab-arrow">{`<`}</div>
-    </div>
-  </a>
-);
+// const Tab = () => (
+//   <a
+//     id="tab-link"
+//     href="#"
+//     onClick={() => {
+//       document.getElementById('sidebar').classList.toggle('open');
+//       document.getElementById('tab-arrow').classList.toggle('rotate');
+//     }}
+//   >
+//     <div id="sidebar-tab">
+//       <div id="tab-arrow">{`<`}</div>
+//     </div>
+//   </a>
+// );
 
 Sidebar.propTypes = {
   area: PropTypes.string.isRequired,

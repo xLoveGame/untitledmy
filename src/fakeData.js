@@ -5,7 +5,7 @@ const TOTAL_COUNT = 500;
 // eslint-disable-next-line react-hooks/rules-of-hooks
 
 
-export const susolvkaCoords = {lat: 52.626489, lng:-1.129097};
+    export const susolvkaCoords = {lat: 51.882000, lng:	-5.269000};
 
 export const markersData = [...Array(TOTAL_COUNT)]
     .fill(0) // fill(0) for loose mode

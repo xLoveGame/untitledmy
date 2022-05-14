@@ -25,8 +25,7 @@ export default class Map extends Component {
         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyClE35W_e58RfSI59WdhHQmOEw82vUZbjs`}
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={
-          // <div style={{ height: `calc(100vh - 90px)`, width: '100%' }} />
-            <div style={{ height: `calc(100vh)`, width: '100%' }} />
+          <div style={{ height: `calc(100vh)`, width: '100%' }} />
         }
         mapElement={<div style={{ height: `100%` }} />}
       />

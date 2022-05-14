@@ -1,0 +1,73 @@
+#a {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+    color: indigo;
+}
+
+#sidebar {
+    display: flex;
+    height: calc(100vh - 175px);
+    justify-content: space-between;
+    margin: 55px 0 0 -275px;
+    position: fixed;
+    transition: margin 1s;
+    z-index: 1;
+}
+
+#sidebar input {
+    height: 33px;
+    padding: 0 5px;
+}
+
+#sidebar select {
+    height: 35px;
+}
+
+#sidebar h2 {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+#sidebar-main {
+    border-radius: 0 0 10px 0;
+    padding: 20px;
+    width: 235px;
+}
+
+#sidebar-tab {
+    align-items: center;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+}
+
+#sidebar-main,
+#sidebar-tab {
+    /*background: wheat;*/
+    background-color: aliceblue;
+
+}
+
+#sidebar-tab,
+#sidebar-tab:before {
+    border-radius: 0 5px 5px 0;
+}
+
+/*This element sits below the #sidebar-tab which means that when
+ box-shadow is applied, the shadow doesn't bleed into other divs*/
+#sidebar-tab:before {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+
+#sidebar-main,
+#sidebar-tab:before {
+    box-shadow: 1px 1px 5px #666;
+}

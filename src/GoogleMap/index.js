@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import GoogleMapReact from 'google-map-react';
 import supercluster from 'points-cluster';
 import {Alert, message, notification, Popover, Tooltip} from 'antd';
 import Marker from '../Marker';
 import ClusterMarker from '../ClusterMarker';
-
+import './index.css';
 import mapStyles from './mapStyles.json';
 import {markersData, susolvkaCoords, test} from '../fakeData';
 
@@ -19,20 +19,23 @@ const MAP = {
     defaultZoom: 16,
     defaultCenter: susolvkaCoords,
     options: {
-        styles: mapStyles,
+        // styles: mapStyles,
         maxZoom: 30,
     },
 };
 
 function GoogleMap() {
+    const ref = useRef(null);
+    const [center, setCenter] = useState(MAP.defaultCenter);
+    const [number, setNumber] = useState()
     const [my, setMy] = useState()
     const [loading, setLoading] = useState(true)
     const [sta, setSta] = useState(true)
-    const [myvalue, setMyvalue] = useState("")
+    const [myValue, setMyValue] = useState("")
     // eslint-disable-line react/prefer-stateless-function
     let state;
     state = {
-        mydata: [],
+        myData: [],
         mapOptions: {
             center: MAP.defaultCenter,
             zoom: MAP.defaultZoom,
@@ -66,18 +69,17 @@ function GoogleMap() {
     useEffect(() => {
         if (sta) {
 
-            axios.get('/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592').then(res => {
-                //console.log(res.data[0].location.latitude)
+            axios.get('/api/crimes-street/all-crime?lat=51.882000&lng=-5.269000').then(res => {
+                setNumber(res.data.length)
                 setMy(res.data)
                 setLoading(false)
             })
-            console.log("AAAAA")
         }
     }, [])
 
 
     if (loading) {
-        return <div>please wait a minute, the page is loading!! </div>
+        return <div>Please wait a minute, the page is loading!! </div>
     }
 
 
@@ -142,8 +144,10 @@ function GoogleMap() {
                     '&lng=' + res.data.results[0].geometry.location.lng).then(res1 => {
                     console.log(res1)
                     state.mapOptions.center = {lat: res.data.results[0].geometry.location.lat, lng:res.data.results[0].geometry.location.lng}
-                    MAP.defaultCenter = {lat: res.data.results[0].geometry.location.lat, lng:res.data.results[0].geometry.location.lng}
+                    // MAP.defaultCenter =
+                    setCenter( {lat: res.data.results[0].geometry.location.lat, lng:res.data.results[0].geometry.location.lng})
                     setMy(res1.data)
+                    setNumber(res1.data.length)
                     setSta(false)
                     setLoading(false)
                 })
@@ -153,56 +157,51 @@ function GoogleMap() {
     //console.log(my)
 
 
-    function sendout(item) {
-        setMyvalue(my[item].category)
+    function sendOut(item) {
+        setMyValue(my[item].category)
         console.log(my[item])
     }
 
-
     return (
 
-            <MapWrapper  >please input where you want to search:
+            <MapWrapper  >Enter PostCode Here:
                 <Search
-                    placeholder="input the post code "
+                    placeholder="post code "
                     allowClear
                     enterButton="Search"
                     size="large"
                     onSearch={onSearch}
 
-                /> <a >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this is a {myvalue} crime!</a>
+                /> <b> <a style={{    fontsize: 20, margin: 10, color: "#003366",
+                }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That's a {myValue} crime!
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The total crime number in 1 mile is {number} </a> </b>
                 <br/>
                 <GoogleMapReact
                     defaultZoom={MAP.defaultZoom}
-                    defaultCenter={MAP.defaultCenter}
+                    // defaultCenter={center}
+                    center={center}
                     options={MAP.options}
                     //onChange={handleMapChange}
-                    onChildClick={sendout}
+                    onChildClick={sendOut}
                     yesIWantToUseGoogleMapApiInternals
                     bootstrapURLKeys={{key: 'AIzaSyB0l31-liHi0g6OdH6e5avHe9sNaGnY65g'}}
                 >
                     {state.clusters.map(item => {
-                        //console.log(item.numPoints)
-
                         return (
                             <Marker
                                 key={item.id}
                                 lat={item.lat}
                                 lng={item.lng}
                                 text="AAAAAAAAAAAAAAAAA"
-                                onclick={sendout.bind(this, item)}
+                                onclick={sendOut.bind(this, item)}
                             >
                             </Marker>
-
                         );
-
-
                     })}
 
                 </GoogleMapReact>
             </MapWrapper>
-
     );
-
 }
 
 
