@@ -164,15 +164,18 @@ function GoogleMap() {
 
     return (
 
-            <MapWrapper  >Enter PostCode Here:
+            <MapWrapper  > <b><a style={{    fontsize: 20, margin: 10, color: "#003366",
+            }}>Enter PostCode Here: </a> </b>
                 <Search
+                    style={{    fontsize: 20, margin: 10, color: "#003366",
+                    }}
                     placeholder="post code "
                     allowClear
                     enterButton="Search"
                     size="large"
                     onSearch={onSearch}
-
-                /> <b> <a style={{    fontsize: 20, margin: 10, color: "#003366",
+                />
+                <b> <a style={{    fontsize: 20, margin: 10, color: "#003366",
                 }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;That's a {myValue} crime!
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The total crime number in 1 mile is {number} </a> </b>
                 <br/>
