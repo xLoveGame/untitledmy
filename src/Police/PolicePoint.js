@@ -60,7 +60,7 @@ export default class PolicePoint extends Component {
       //is because the app spec explicitly says that there must be pins
       //rendered on the map when the app is first loaded.  "Leicestershire"
       //was chosen because it has a fast load time, and a good range of data.
-      .then(() => this.setArea('City of London'));
+      .then(() => this.setArea('Hampshire'));
   }
 
   render() {

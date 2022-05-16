@@ -195,7 +195,7 @@ function GoogleMap() {
                                 key={item.id}
                                 lat={item.lat}
                                 lng={item.lng}
-                                text="AAAAAAAAAAAAAAAAA"
+                                //text="AAAAAAAAAAAAAAAAA"
                                 onclick={sendOut.bind(this, item)}
                             >
                             </Marker>
