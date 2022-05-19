@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './components/Header';
 import Map from './components/Map';
 import Sidebar from './components/Sidebar';
 import { getForces, getNeighbourhoods } from './api/PoliceAPI';
@@ -15,7 +14,7 @@ export default class PolicePoint extends Component {
     neighbourhoods: []
   };
 
-  //Update filterQuery and filteredNeighbourhoods based on filterQuery
+
   setFilter = query => {
     const lowerQuery = query.toLowerCase();
     const filteredHoods = this.state.neighbourhoods.filter(hood =>
@@ -27,15 +26,13 @@ export default class PolicePoint extends Component {
     );
   };
 
-  //Deselect current neighbourhood if it's not in filtered neighbourhoods
-  //This means a selected neighbourhood can never be "hidden" from the user
   verifySelectedHoodInList = () => {
     const { filter, neighbourhood } = this.state;
     !filter.neighbourhoods.includes(neighbourhood) &&
       this.setState({ neighbourhood: {} });
   };
 
-  //Sets current area and resets any state relating to a previous area
+
   setArea = area => {
     this.setState({ area, isLoading: true });
     const areaId = this.state.forces.find(force => force.name === area).id;
@@ -54,12 +51,6 @@ export default class PolicePoint extends Component {
   componentDidMount() {
     getForces()
       .then(forces => this.setState({ forces }))
-      //This line hard codes in the default area to load when the app is
-      //initialised.  It can be removed to give the user a chance to select
-      //which area they want to browse initially.  The reason it is included
-      //is because the app spec explicitly says that there must be pins
-      //rendered on the map when the app is first loaded.  "Leicestershire"
-      //was chosen because it has a fast load time, and a good range of data.
       .then(() => this.setArea('Hampshire'));
   }
 

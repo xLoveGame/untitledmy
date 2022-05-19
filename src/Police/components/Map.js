@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import NeighbourhoodDetails from './NeighbourhoodDetails';
-// import apiConfig from '../api/apiKeys';
 import {
   InfoWindow,
   GoogleMap,
@@ -36,7 +35,7 @@ export default class Map extends Component {
 const RenderMap = withScriptjs(
   withGoogleMap(
     ({ availableNeighbourhoods, filter, neighbourhood, setNeighbourhood }) => {
-      //Create bounds object from filtered markers - used later to center map
+
       let bounds = new window.google.maps.LatLngBounds();
       filter.neighbourhoods.map(hood =>
         bounds.extend(
@@ -44,19 +43,16 @@ const RenderMap = withScriptjs(
         )
       );
 
-      //Handles panning of map as panning can only be called on subsequent
-      //renders of the map - initial render uses fitBounds instead
+
       const focusMap = map => {
         if (map) {
-          //If no neighbourhood selected & no neighbourhoods filtered, it
-          //must be the initial load of the map
+
           !neighbourhood.id &&
           availableNeighbourhoods === filter.neighbourhoods.length
-            ? //fitBounds called as panTo doesn't work unless map initialised
+            ?
               map.fitBounds(bounds)
-            : //Else pan to selected neighbourhood or center of bounds
+            :
               map.panTo(neighbourhood.location || bounds.getCenter());
-          //If selected neighbourhood, pan slightly to make infowindow in center
           neighbourhood.location && map.panBy(0, -150);
         }
       };
@@ -64,7 +60,7 @@ const RenderMap = withScriptjs(
       return (
         <GoogleMap
           defaultOptions={{
-            center: { lat: 51.509865, lng: -0.118092 }, //Mandatory paramater
+            center: { lat: 51.509865, lng: -0.118092 },
             mapTypeControlOptions: {
               mapTypeIds: [
                 window.google.maps.MapTypeId.ROADMAP,
@@ -77,12 +73,12 @@ const RenderMap = withScriptjs(
           {filter.neighbourhoods.map(hood => (
             <Marker
               key={hood.id}
-              //animation = 1 is bouncing effect, null doesn't render the prop
+
               animation={hood.id === neighbourhood.id ? 1 : null}
               position={hood.location}
               onClick={() => setNeighbourhood(hood)}
               icon={{
-                  // url:'https://maps.google.com/mapfiles/kml/shapes/library_maps.png',
+
                   url:require("../img/ps1.png"),
                   // eslint-disable-next-line no-undef
                   size: new google.maps.Size(40, 40),
@@ -90,11 +86,11 @@ const RenderMap = withScriptjs(
                   scaledSize: new google.maps.Size(40, 40),
               }}
             >
-              {//If this marker is selected, render InfoWindow
+              {
               neighbourhood.id === hood.id && (
                 <InfoWindow
                   onCloseClick={() => {
-                    setNeighbourhood({}); //Unset selected neighbourhood
+                    setNeighbourhood({});
                     this.map.panTo(bounds.getCenter());
                   }}
                 >

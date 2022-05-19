@@ -92,48 +92,6 @@ function GoogleMap() {
             my[index].location.longitude,
         }));
 
-    /*
-        function getClusters() {
-            const clusters = supercluster(state.clusters, {
-                    minZoom: 0,
-                    maxZoom: 40,
-                    radius: 100,
-                }
-            );
-            console.log(clusters)
-            console.log(state.mapOptions)
-            console.log(clusters(state.mapOptions))
-            return clusters(state.mapOptions)
-
-        }
-
-        function createClusters(props) {
-            console.log(getClusters(props))
-            state.clusters = (state.mapOptions.bounds ? getClusters(props).map(({wx, wy, numPoints, points}) => ({
-
-                lat: wy,
-                lng: wx,
-                numPoints,
-                id: `${numPoints}_${points.id}`,
-                points,
-            })) : [])
-            console.log("123")
-        }
-
-
-        function handleMapChange({center, zoom, bounds}) {
-
-
-            // eslint-disable-next-line no-unused-expressions
-            state.mapOptions = {
-                center,
-                zoom,
-                bounds,
-            },
-                console.log(state.mapOptions)
-            createClusters(this.props);
-
-        }*/
 
 
     function onSearch(value) {
